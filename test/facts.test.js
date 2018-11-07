@@ -33,7 +33,7 @@ describe('GET /facts/random', function() {
       .expect(function(response) {
         expect(response.body.fact).to.be.a('string');
       })
-      .end(done)
+      .end(done);
   });
 })
 
@@ -41,7 +41,12 @@ describe('GET /facts/:factId', function() {
   // TASK 2:
   // copy a test from above and adapt it to check that a GET request to
   // /facts/1 returns a 200 status code
-  it('returns 200 when the fact exists')
+  it('returns 200 when the fact exists', function(done) {
+    api
+      .get('/facts/1')
+      .expect(200)
+      .end(done);
+  });
 
   // checks to see if the body matches a particular object:
   it('returns the fact with id 1', function(done) {
