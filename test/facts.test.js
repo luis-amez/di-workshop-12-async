@@ -38,9 +38,7 @@ describe('GET /facts/random', function() {
 })
 
 describe('GET /facts/:factId', function() {
-  // TASK 2:
-  // copy a test from above and adapt it to check that a GET request to
-  // /facts/1 returns a 200 status code
+  // tests to see if we get a 200 status code when we send a GET request
   it('returns 200 when the fact exists', function(done) {
     api
       .get('/facts/1')
@@ -61,10 +59,16 @@ describe('GET /facts/:factId', function() {
       .end(done) // pass the `done` callback so we know when this test is finished
   })
 
-  // TASK 3:
-  // copy a test from above and adapt it to check that /facts/19 returns the
-  // fact "Dogs have sweat glands in between their paws."
-  it('returns the fact with id 5')
+  // checks to see if the body matches a particular object:
+  it('returns the fact with id 5', function(done) {
+    api
+      .get('/facts/5')
+      .expect({
+        id: 5,
+        fact: 'Dogs have sweat glands in between their paws.'
+      })
+      .end(done);
+  });
 
   // TASK 4:
   // copy a test from above and adapt it to check that a request to a
