@@ -26,10 +26,15 @@ describe('GET /facts/random', function() {
       .end(done) // pass the `done` callback so we know when this test is finished
   })
 
-  // TASK 1:
-  // copy the previous test and adapt it to check that response contains a
-  // string called `fact`:
-  it('returns ths fact content')
+  // test to see if the body of the response contains a string called 'fact'
+  it('returns the fact content', function(done) {
+    api
+      .get('/facts/random')
+      .expect(function(response) {
+        expect(response.body.fact).to.be.a('string');
+      })
+      .end(done)
+  });
 })
 
 describe('GET /facts/:factId', function() {
