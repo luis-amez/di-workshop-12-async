@@ -70,8 +70,11 @@ describe('GET /facts/:factId', function() {
       .end(done);
   });
 
-  // TASK 4:
-  // copy a test from above and adapt it to check that a request to a
-  // non-existant fact id (e.g. /facts/12345) returns a 404 status code
-  it('returns 404 if the fact does not exist')
+  // checks that non-existant fact id (e.g. /facts/7777777) returns a 404 status code
+  it('returns 404 if the fact does not exist', function(done) {
+    api
+      .get('/facts/7777777')
+      .expect(404)
+      .end(done);
+  });
 })
